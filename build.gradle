@@ -26,7 +26,7 @@ application {
 }
 
 compileJava {
-    options.release = 17 as Property<Integer>
+    options.release = 17
 }
 
 run {
