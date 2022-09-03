@@ -9,7 +9,6 @@ public class Cli {
         Scanner sc = new Scanner(System.in);
         String name = sc.next();
         System.out.println("Hello, " + name + "!");
-        System.out.println("");
         return name;
     }
 }
