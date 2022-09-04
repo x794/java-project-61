@@ -1,3 +1,4 @@
+# FROM GIT JAVA TEMPLATE:
 # Compiled class file
 *.class
 
@@ -23,4 +24,17 @@
 hs_err_pid*
 replay_pid*
 
-/build
+# FROM HEXLET SAMPLE:
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+
+**/logs/
+
+.settings
+bin
+.project*
+.classpath
+.idea/
