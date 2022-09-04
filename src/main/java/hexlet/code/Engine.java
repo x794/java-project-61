@@ -14,7 +14,7 @@ public class Engine {
     }
 
     public static int getRandom(int max) {
-        return (int) (Math.random() * max);
+        return (int) (Math.random() * max + 1);
     }
 
     // show question invite and return user answer

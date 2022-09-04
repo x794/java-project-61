@@ -2,10 +2,10 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-public class GameGCD {
+public class GameProgression {
     public static void play() {
         String userName = Engine.getUserName();
-        System.out.println("Find the greatest common divisor of given numbers.");
+        System.out.println("What number is missing in the progression?");
         final int roundNumber = 3;
         for (int i = 0; i < roundNumber; i++) {
             if (!makeRound()) {
@@ -26,20 +26,19 @@ public class GameGCD {
 
     // make question, ask user and return good answer, not take user answer!!!
     private static String makeQuestion() {
-        final int maxNumber = 100;
-        int number1 = Engine.getRandom(maxNumber);
-        int number2 = Engine.getRandom(maxNumber);
-        System.out.println("Question: " + number1 + " " + number2);
-        return getGCD(number1, number2);
-    }
-
-    private static String getGCD(int number1, int number2) {
-        int minOfNumber = Math.min(number1, number2);
-        for (int i = minOfNumber; i > 1; i--) {
-            if ((number1 % i == 0) && (number2 % i == 0)) {
-                return i + "";
-            }
+        final int maxStartNumber = 20;
+        final int minQuantityOfNumbers = 5;
+        final int randQuantityOfNumbers = 5;
+        final int increment = Engine.getRandom(10);
+        int firstNumber = Engine.getRandom(maxStartNumber);
+        int quantityOfNumbers = minQuantityOfNumbers + Engine.getRandom(randQuantityOfNumbers);
+        int positionOfHiddenNumber = Engine.getRandom(quantityOfNumbers);
+        int goodAnswer = firstNumber + ((positionOfHiddenNumber - 1) * increment);
+        System.out.print("Question: ");
+        for (int i = 1; i <= quantityOfNumbers; i++) {
+            System.out.print((i == positionOfHiddenNumber) ? (".. ") : (firstNumber + (i - 1) * increment) + " ");
         }
-        return "1";
+        System.out.println();
+        return goodAnswer + "";
     }
 }
