@@ -3,36 +3,28 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 public class GameGCD {
-    public static void play() {
-        String userName = Engine.getUserName();
-        System.out.println("Find the greatest common divisor of given numbers.");
-        final int roundNumber = 3;
-        for (int i = 0; i < roundNumber; i++) {
-            if (!makeRound()) {
-                System.out.println("Let's try again, " + userName);
-                return;
-            }
-        }
-        System.out.println("Congratulations, " + userName + "!");
+    public static String getRules() {
+        return "Find the greatest common divisor of given numbers.";
     }
 
-    // make round with user (ask, test, provide round result) and return round result
-    // the same method for each game
-    private static boolean makeRound() {
-        String goodAnswer = makeQuestion();
-        String userAnswer = Engine.getUserAnswer();
-        return Engine.testAnswer(userAnswer, goodAnswer);
-    }
-
-    // make question, ask user and return good answer, not take user answer!!!
-    private static String makeQuestion() {
+    public static boolean getRound() {
+        // compute game parameters
+        final int minNumber = 1;
         final int maxNumber = 100;
-        int number1 = Engine.getRandom(maxNumber);
-        int number2 = Engine.getRandom(maxNumber);
+        int number1 = Engine.getRandom(minNumber, maxNumber);
+        int number2 = Engine.getRandom(minNumber, maxNumber);
+
+        // show question
         System.out.println("Question: " + number1 + " " + number2);
-        return getGCD(number1, number2);
+
+        // compute goodAnswer
+        String goodAnswer =  getGCD(number1, number2);
+
+        // get userAnswer and compare it to goodAnswer
+        return Engine.testAnswer(goodAnswer);
     }
 
+    // return symbol of random operation
     private static String getGCD(int number1, int number2) {
         int minOfNumber = Math.min(number1, number2);
         for (int i = minOfNumber; i > 1; i--) {

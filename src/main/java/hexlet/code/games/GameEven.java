@@ -3,36 +3,27 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 public class GameEven {
-    public static void play() {
-        String userName = Engine.getUserName();
-        System.out.println("Answer 'yes' if the number is even, "
-                + "otherwise answer 'no'.");
-        final int roundNumber = 3;
-        for (int i = 0; i < roundNumber; i++) {
-            if (!makeRound()) {
-                System.out.println("Let's try again, " + userName);
-                return;
-            }
-        }
-        System.out.println("Congratulations, " + userName + "!");
+    public static String getRules() {
+        return "Answer 'yes' if the number is even, otherwise answer 'no'.";
     }
 
-    // make round with user (ask, test, provide round result) and return round result
-    private static boolean makeRound() {
-        String goodAnswer = makeQuestion();
-        String userAnswer = Engine.getUserAnswer();
-        return Engine.testAnswer(userAnswer, goodAnswer);
-    }
-
-    // make question, ask user, return good answer, not take user answer!!!
-    private static String makeQuestion() {
+    // ask user the question, but not take user answer!!! Return good answer
+    public static boolean getRound() {
+        // compute game parameters
+        final int minNumber = 1;
         final int maxNumber = 100;
-        int number = Engine.getRandom(maxNumber);
+        int number = Engine.getRandom(minNumber, maxNumber);
+
+        // show question
         System.out.println("Question: " + number);
+
+        // compute goodAnswer
         String goodAnswer = "no";
         if (number % 2 == 0) {
             goodAnswer = "yes";
         }
-        return goodAnswer;
+
+        // get userAnswer and compare it to goodAnswer
+        return Engine.testAnswer(goodAnswer);
     }
 }
