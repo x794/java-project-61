@@ -2,6 +2,8 @@ package hexlet.code;
 
 import java.util.Scanner;
 
+import static hexlet.code.Engine.getGame;
+
 public class App {
     public static void main(String[] args) {
         System.out.println("Please enter the game number and press Enter.");
@@ -16,6 +18,6 @@ public class App {
         Scanner sc = new Scanner(System.in);
         String game = sc.next();
         System.out.println("");
-        System.out.println(Engine.getGame(game));
+        System.out.println(getGame(game));
     }
 }

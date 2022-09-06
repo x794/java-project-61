@@ -27,7 +27,7 @@ public class Engine {
         final int roundNumber = 3;
         for (int i = 0; i < roundNumber; i++) {
             if (!getRound(game)) {
-                return ("Let's try again, " + userName);
+                return ("Let's try again, " + userName + "!");
             }
         }
         return ("Congratulations, " + userName + "!");
